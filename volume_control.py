@@ -1,3 +1,5 @@
+#This project helps you control the volume on your PC with Arduino-potentiometer 
+
 import pyautogui
 import serial
 import time
@@ -9,8 +11,7 @@ from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 devices = AudioUtilities.GetSpeakers()
 interface = devices.Activate(IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
 volume = cast(interface, POINTER(IAudioEndpointVolume))
-#print(volume.GetMasterVolumeLevel())
-#print(volume.GetVolumeRange())
+
 
 ser = serial.Serial('COM5', 9600)
 time.sleep(2)
@@ -18,13 +19,11 @@ time.sleep(2)
 while True:
     b = ser.readline()
     signal = b.decode('latin-1')
-    print("pot: ",signal)
-
+    #print("pot: ",signal)
 
     vol = np.interp(signal, [0,100],[-65, 0])
     volume.SetMasterVolumeLevel(vol, None)
 
     signal = "";
-
 
 ser.close()
