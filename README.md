@@ -2,7 +2,9 @@
 
 This project helps you control the volume on your computer using potentiometer connected to Arduino board.
 
+--------------------------------------------
 Run: "volume_control.ino" on your Arduino board then "volume_control.py" on your PC.
+--------------------------------------------
 
 # Requirments
 Hardware:
